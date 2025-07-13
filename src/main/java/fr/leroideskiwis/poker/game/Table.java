@@ -2,10 +2,11 @@ package fr.leroideskiwis.poker.game;
 
 import fr.leroideskiwis.poker.Deck;
 import fr.leroideskiwis.poker.Hand;
+import fr.leroideskiwis.poker.game.io.GameDisplay;
+import fr.leroideskiwis.poker.game.io.GameInput;
 import fr.leroideskiwis.poker.handrules.handlers.EvaluatedRule;
 import fr.leroideskiwis.poker.handrules.handlers.RuleEvaluator;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,18 +19,21 @@ public class Table {
     private int currentBet;
 
     private RuleEvaluator ruleEvaluator = new RuleEvaluator();
+    private GameDisplay gameDisplay;
 
-    public Table(Player... players) {
+    public Table(GameDisplay gameDisplay, Player... players) {
         this.deck = new Deck();
         this.communityCards = new Hand();
         this.players = List.of(players);
         this.pot = 0;
         this.currentBet = 0;
+        this.gameDisplay = gameDisplay;
     }
 
     public void dealCards() {
         for (Player player : players) {
             player.deal(deck);
+            player.showPrivateCards(gameDisplay);
         }
     }
 
@@ -37,6 +41,7 @@ public class Table {
         for (int i = 0; i < numberOfCards; i++) {
             communityCards.addCard(deck.drawCard());
         }
+        gameDisplay.onShowCommunityCards(communityCards.stream().toList());
     }
 
     public Map<Player, EvaluatedRule> evaluateHands() {
@@ -80,6 +85,7 @@ public class Table {
                 .map(Map.Entry::getKey)
                 .orElseThrow();
         winner.credit(pot);
+        gameDisplay.onGameOver(evaluateHands().entrySet());
         players.forEach(Player::reset);
     }
 
@@ -89,5 +95,31 @@ public class Table {
 
     public int playerSize() {
         return players.size();
+    }
+
+    public GameInput.Action getAction(int playerId, GameInput gameInput) {
+        return gameInput.getAction(diffBet(playerId), pot, communityCards);
+    }
+
+    public boolean executeAction(int currentPlayerIndex, GameInput.Action action) {
+        Player currentPlayer = players.get(currentPlayerIndex);
+        switch (action.type) {
+            case FOLD:
+                fold(currentPlayerIndex);
+                break;
+            case CALL:
+                if (!currentPlayer.hasEnoughMoney(diffBet(currentPlayerIndex))) return false;
+                bet(currentPlayerIndex, diffBet(currentPlayerIndex));
+                break;
+            case RAISE:
+                if (!currentPlayer.hasEnoughMoney(action.amount)) return false;
+                raise(currentPlayerIndex, action.amount);
+                break;
+        }
+        return true;
+    }
+
+    public void displayPlayerTurn(int currentId) {
+        players.get(currentId).displayTurn(gameDisplay, pot, currentBet);
     }
 }
