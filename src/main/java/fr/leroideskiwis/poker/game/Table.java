@@ -56,10 +56,10 @@ public class Table {
         pot += amount;
     }
 
-    public void bet(int playerIndex) {
+    public void bet(int playerIndex, int toBet) {
         Player currentPlayer = players.get(playerIndex);
-        currentPlayer.bet(currentBet);
-        addToPot(currentBet);
+        currentPlayer.bet(toBet);
+        addToPot(toBet);
     }
 
     public void fold(int playerIndex) {
