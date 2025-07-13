@@ -14,6 +14,15 @@ public class Card implements Comparable<Card> {
         this(rank, Suit.UNKNOWN);
     }
 
+    /**
+     * Check if this card is before the given card in terms of rank.
+     * @param card the card to compare with
+     * @return true if this card's rank is lower than the given card's rank, false otherwise (exemple : 1.isBefore(2) == true, 2.isBefore(1) == false)
+     */
+    public boolean isBefore(Card card){
+        return rank.ordinal() == card.rank.ordinal() - 1;
+    }
+
     public int compareTo(Card bestCard) {
         if (this.rank.ordinal() != bestCard.rank.ordinal()) return this.rank.ordinal() - bestCard.rank.ordinal();
         return 0;
