@@ -94,7 +94,7 @@ public class Table {
     }
 
     public boolean isOver() {
-        return communityCards.size() == 5;
+        return players.stream().filter(player -> player.hasEnoughMoney(1)).count() <= 1;
     }
 
     public int playerSize() {
