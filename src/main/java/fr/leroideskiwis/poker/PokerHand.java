@@ -12,4 +12,8 @@ public enum PokerHand {
     STRAIGHT_FLUSH,
     ROYAL_FLUSH;
 
+    @Override
+    public String toString() {
+        return name().toLowerCase().replace("_", " ");
+    }
 }
