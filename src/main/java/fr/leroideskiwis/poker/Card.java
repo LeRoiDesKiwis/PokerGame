@@ -3,7 +3,7 @@ package fr.leroideskiwis.poker;
 public class Card implements Comparable<Card> {
 
     public final Rank rank;
-    private final Suit suit;
+    public final Suit suit;
 
     public Card(Rank rank, Suit suit) {
         this.rank = rank;
