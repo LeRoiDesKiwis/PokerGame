@@ -1,8 +1,13 @@
 package fr.leroideskiwis.poker.handrules;
 
+import fr.leroideskiwis.poker.Card;
 import fr.leroideskiwis.poker.Hand;
+import fr.leroideskiwis.poker.PokerHand;
+import fr.leroideskiwis.poker.Rank;
 import fr.leroideskiwis.poker.util.TestUtil;
 import org.junit.jupiter.api.Test;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,7 +19,10 @@ class OnePairRuleTest {
     void evaluateDoublePair() {
         // Test with a hand that has two pairs
         Hand handWithTwoPairs = TestUtil.createTwoPairHand();
-        assertTrue(onePairRule.evaluate(handWithTwoPairs).isPresent(), "Expected one pair to be detected in a hand with two pairs");
+        Optional<EvaluatedRule> evaluate = onePairRule.evaluate(handWithTwoPairs);
+        assertTrue(evaluate.isPresent(), "Expected one pair to be detected in a hand with two pairs");
+        assertTrue(evaluate.get().isPokerHand(PokerHand.ONE_PAIR), "Expected poker hand to be One Pair");
+        assertEquals(new Card(Rank.ACE), evaluate.get().bestCard, "Expected highest card in one pair to be Ace");
     }
 
     @Test
@@ -30,6 +38,10 @@ class OnePairRuleTest {
         // Test with a hand that has only one pair
         Hand handWithOnePair = TestUtil.createPairHand();
 
-        assertTrue(onePairRule.evaluate(handWithOnePair).isPresent(), "Expected one pair to be detected");
+        Optional<EvaluatedRule> evaluate = onePairRule.evaluate(handWithOnePair);
+        assertTrue(evaluate.isPresent(), "Expected one pair to be detected");
+        assertTrue(evaluate.get().isPokerHand(PokerHand.ONE_PAIR), "Expected poker hand to be One Pair");
+        assertEquals(new Card(Rank.ACE), evaluate.get().bestCard, "Expected highest card in one pair to be Ace");
+
     }
 }

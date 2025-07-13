@@ -1,7 +1,6 @@
 package fr.leroideskiwis.poker.handrules;
 
-import fr.leroideskiwis.poker.Hand;
-import fr.leroideskiwis.poker.PokerHand;
+import fr.leroideskiwis.poker.*;
 import fr.leroideskiwis.poker.util.TestUtil;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +19,7 @@ class StraightFlushRuleTest {
         Optional<EvaluatedRule> evaluate = straightFlushRule.evaluate(handWithStraightFlush);
         assertTrue(evaluate.isPresent(), "Expected straight flush to be detected");
         assertTrue(evaluate.get().isPokerHand(PokerHand.STRAIGHT_FLUSH));
+        assertEquals(new Card(Rank.NINE, Suit.HEARTS), evaluate.get().bestCard,"Expected highest card in straight flush to be Nine of Hearts");
     }
 
     @Test
@@ -50,6 +50,7 @@ class StraightFlushRuleTest {
         Optional<EvaluatedRule> evaluate = straightFlushRule.evaluate(handWithAceStraightFlush);
         assertTrue(evaluate.isPresent(), "Expected straight flush with Ace to be detected");
         assertTrue(evaluate.get().isPokerHand(PokerHand.ROYAL_FLUSH), "Expected poker hand to be Royal Flush");
+        assertEquals(new Card(Rank.ACE, Suit.HEARTS), evaluate.get().bestCard,"Expected highest card in straight flush to be Nine of Hearts");
     }
 
 }

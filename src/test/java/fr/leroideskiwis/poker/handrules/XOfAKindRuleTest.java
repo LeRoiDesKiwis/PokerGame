@@ -59,6 +59,7 @@ class XOfAKindRuleTest {
         Optional<EvaluatedRule> result = xOfAKindRule.evaluate(hand);
         assertTrue(result.isPresent(), "Expected three of a kind to be detected");
         assertTrue(result.get().isPokerHand(PokerHand.THREE_OF_A_KIND), "Expected hand to be evaluated as THREE_OF_A_KIND");
+        assertEquals(new Card(Rank.TWO), result.get().bestCard);
     }
 
     @Test
@@ -67,6 +68,7 @@ class XOfAKindRuleTest {
         Optional<EvaluatedRule> result = xOfAKindRule.evaluate(hand);
         assertTrue(result.isPresent(), "Expected four of a kind to be detected");
         assertTrue(result.get().isPokerHand(PokerHand.FOUR_OF_A_KIND), "Expected hand to be evaluated as FOUR_OF_A_KIND");
+        assertEquals(new Card(Rank.TWO), result.get().bestCard);
     }
 
 }

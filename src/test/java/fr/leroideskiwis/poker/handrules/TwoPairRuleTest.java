@@ -1,11 +1,10 @@
 package fr.leroideskiwis.poker.handrules;
 
-import fr.leroideskiwis.poker.Card;
-import fr.leroideskiwis.poker.Hand;
-import fr.leroideskiwis.poker.Rank;
-import fr.leroideskiwis.poker.Suit;
+import fr.leroideskiwis.poker.*;
 import fr.leroideskiwis.poker.util.TestUtil;
 import org.junit.jupiter.api.Test;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +16,10 @@ class TwoPairRuleTest {
     void evaluateDoublePair() {
         // Test with a hand that has two pairs
         Hand handWithTwoPairs = TestUtil.createTwoPairHand();
-        assertTrue(twoPairRule.evaluate(handWithTwoPairs).isPresent(), "Expected two pairs to be detected");
+        Optional<EvaluatedRule> evaluate = twoPairRule.evaluate(handWithTwoPairs);
+        assertTrue(evaluate.isPresent(), "Expected two pairs to be detected");
+        assertTrue(evaluate.get().isPokerHand(PokerHand.TWO_PAIR), "Expected hand to be evaluated as TWO_PAIR");
+        assertEquals(new Card(Rank.ACE), evaluate.get().bestCard, "Expected best card to be the highest pair");
     }
 
     @Test

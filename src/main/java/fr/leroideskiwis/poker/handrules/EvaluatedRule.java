@@ -6,7 +6,7 @@ import fr.leroideskiwis.poker.PokerHand;
 public class EvaluatedRule implements Comparable<EvaluatedRule> {
 
     private final PokerHand hand;
-    private final Card bestCard;
+    public final Card bestCard;
 
     public EvaluatedRule(PokerHand hand, Card bestCard) {
         this.hand = hand;
