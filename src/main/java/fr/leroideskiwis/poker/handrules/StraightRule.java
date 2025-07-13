@@ -20,13 +20,16 @@ public class StraightRule implements PokerRule {
         int streak = 0;
         Card best = null;
         for(int i = 0; i < cards.size(); i++){
-            if(i < cards.size() - 1 && !cards.get(i).isBefore(cards.get(i+1))){
+            Card card = cards.get(i);
+            Card card1 = i < cards.size() - 1 ? cards.get(i + 1) : null;
+            if(card1 != null && !card.isBefore(card1)){
+                if(card.rank == card1.rank) continue; // Skip if the cards are the same rank
                 streak = 0;
                 best = null;
                 continue;
             };
             streak++;
-            best = cards.get(i);
+            best = card;
         }
 
         return streak >=5 ?Optional.of(new EvaluatedRule(
