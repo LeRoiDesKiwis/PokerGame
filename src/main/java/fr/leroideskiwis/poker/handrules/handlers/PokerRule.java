@@ -1,4 +1,4 @@
-package fr.leroideskiwis.poker.handrules;
+package fr.leroideskiwis.poker.handrules.handlers;
 
 import fr.leroideskiwis.poker.Hand;
 

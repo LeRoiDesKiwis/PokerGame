@@ -1,6 +1,7 @@
 package fr.leroideskiwis.poker.handrules;
 
 import fr.leroideskiwis.poker.*;
+import fr.leroideskiwis.poker.handrules.handlers.EvaluatedRule;
 import fr.leroideskiwis.poker.util.TestUtil;
 import org.junit.jupiter.api.Test;
 

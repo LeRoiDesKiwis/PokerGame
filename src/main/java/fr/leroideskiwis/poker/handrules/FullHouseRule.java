@@ -4,6 +4,8 @@ import fr.leroideskiwis.poker.Card;
 import fr.leroideskiwis.poker.Hand;
 import fr.leroideskiwis.poker.Rank;
 import fr.leroideskiwis.poker.PokerHand;
+import fr.leroideskiwis.poker.handrules.handlers.EvaluatedRule;
+import fr.leroideskiwis.poker.handrules.handlers.PokerRule;
 
 import java.util.Map;
 import java.util.Optional;

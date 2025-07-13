@@ -4,7 +4,7 @@ import fr.leroideskiwis.poker.Card;
 import fr.leroideskiwis.poker.PokerHand;
 import fr.leroideskiwis.poker.Rank;
 import fr.leroideskiwis.poker.Suit;
-import org.junit.jupiter.api.BeforeEach;
+import fr.leroideskiwis.poker.handrules.handlers.EvaluatedRule;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

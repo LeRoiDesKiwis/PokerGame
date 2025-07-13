@@ -4,12 +4,14 @@ import fr.leroideskiwis.poker.Card;
 import fr.leroideskiwis.poker.Hand;
 import fr.leroideskiwis.poker.PokerHand;
 import fr.leroideskiwis.poker.Rank;
+import fr.leroideskiwis.poker.handrules.handlers.EvaluatedRule;
+import fr.leroideskiwis.poker.handrules.handlers.PokerRule;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class TwoPairRule implements PokerRule{
+public class TwoPairRule implements PokerRule {
     @Override
     public Optional<EvaluatedRule> evaluate(Hand hand) {
         Map<Rank, Integer> rankCount = hand.getRankCount();
