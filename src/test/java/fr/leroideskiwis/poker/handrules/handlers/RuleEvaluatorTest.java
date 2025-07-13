@@ -101,4 +101,18 @@ class RuleEvaluatorTest {
         assertTrue(evaluate.isPokerHand(PokerHand.ROYAL_FLUSH), "Expected poker hand to be Royal Flush");
         assertEquals(new Card(Rank.ACE, Suit.HEARTS), evaluate.bestCard, "Expected highest card in royal flush to be Ace of Hearts");
     }
+
+    @Test
+    void royalFlushIfFulLDeck(){
+        Hand hand = new Hand();
+        for (Rank rank : Rank.values()) {
+            for (Suit suit : Suit.values()) {
+                hand.addCard(new Card(rank, suit));
+            }
+        }
+
+        EvaluatedRule evaluate = ruleEvaluator.evaluate(hand);
+        assertTrue(evaluate.isPokerHand(PokerHand.ROYAL_FLUSH), "Expected poker hand to be Royal Flush with full deck");
+        assertEquals(Rank.ACE, evaluate.bestCard.rank, "Expected highest card in royal flush to be Ace of Spades");
+    }
 }
