@@ -1,7 +1,6 @@
 package fr.leroideskiwis.poker;
 
 public enum Rank {
-    ONE,
     TWO,
     THREE,
     FOUR,

@@ -23,7 +23,7 @@ public class TestUtil {
         return new Hand(new Card(Rank.TWO, Suit.HEARTS),
                 new Card(Rank.TWO, Suit.SPADES),
                 new Card(Rank.TWO, Suit.DIAMONDS),
-                new Card(Rank.ONE, Suit.CLUBS),
+                new Card(Rank.THREE, Suit.CLUBS),
                 new Card(Rank.ACE, Suit.HEARTS));
     }
 
