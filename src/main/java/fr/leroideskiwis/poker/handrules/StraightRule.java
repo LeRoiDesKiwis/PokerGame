@@ -17,16 +17,22 @@ public class StraightRule implements PokerRule {
     @Override
     public Optional<EvaluatedRule> evaluate(Hand hand) {
         List<Card> cards = hand.stream().sorted().toList();
-
+        int streak = 0;
+        Card best = null;
         for(int i = 0; i < cards.size(); i++){
-            if(i == cards.size() - 1) break;
-            if(!cards.get(i).isBefore(cards.get(i+1))) return Optional.empty();
+            if(i < cards.size() - 1 && !cards.get(i).isBefore(cards.get(i+1))){
+                streak = 0;
+                best = null;
+                continue;
+            };
+            streak++;
+            best = cards.get(i);
         }
 
-        return Optional.of(new EvaluatedRule(
+        return streak >=5 ?Optional.of(new EvaluatedRule(
                 PokerHand.STRAIGHT,
-                cards.getLast().unknownize()
-        ));
+                best.unknownize()
+        )) : Optional.empty();
 
     }
 }
