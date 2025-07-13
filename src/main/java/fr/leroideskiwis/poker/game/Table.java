@@ -26,7 +26,7 @@ public class Table {
         this.communityCards = new Hand();
         this.players = List.of(players);
         this.pot = 0;
-        this.currentBet = 0;
+        this.currentBet = 10;
         this.gameDisplay = gameDisplay;
     }
 
