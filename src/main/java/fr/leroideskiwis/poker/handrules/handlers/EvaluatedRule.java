@@ -3,9 +3,11 @@ package fr.leroideskiwis.poker.handrules.handlers;
 import fr.leroideskiwis.poker.Card;
 import fr.leroideskiwis.poker.PokerHand;
 
+import java.util.Locale;
+
 public class EvaluatedRule implements Comparable<EvaluatedRule> {
 
-    private final PokerHand hand;
+    public final PokerHand hand;
     public final Card bestCard;
 
     public EvaluatedRule(PokerHand hand, Card bestCard) {
@@ -22,5 +24,10 @@ public class EvaluatedRule implements Comparable<EvaluatedRule> {
 
     public boolean isPokerHand(PokerHand pokerHand) {
         return hand == pokerHand;
+    }
+
+    @Override
+    public String toString() {
+        return hand.toString().toLowerCase(Locale.ROOT).replace("_", " ");
     }
 }
