@@ -123,6 +123,10 @@ public class Table {
         return true;
     }
 
+    public boolean isOut(int i) {
+        return players.get(i).hasFolded();
+    }
+
     public void displayPlayerTurn(int currentId) {
         players.get(currentId).displayTurn(gameDisplay, pot, currentBet);
     }
