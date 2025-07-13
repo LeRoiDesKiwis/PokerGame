@@ -26,6 +26,17 @@ public class Deck {
         return drawnCard;
     }
 
+    public Hand createHand(int numberOfCards) {
+        if (numberOfCards < 1 || numberOfCards > cards.size()) {
+            throw new IllegalArgumentException("Invalid number of cards requested: " + numberOfCards);
+        }
+        Hand hand = new Hand();
+        for (int i = 0; i < numberOfCards; i++) {
+            hand.addCard(drawCard());
+        }
+        return hand;
+    }
+
     public int size() {
         return cards.size();
     }
