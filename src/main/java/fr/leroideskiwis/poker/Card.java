@@ -34,4 +34,16 @@ public class Card implements Comparable<Card> {
         if (!(obj instanceof Card other)) return false;
         return this.rank == other.rank && this.suit == other.suit;
     }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "rank=" + rank +
+                ", suit=" + suit +
+                '}';
+    }
+
+    public Card unknownize(){
+        return new Card(this.rank, Suit.UNKNOWN);
+    }
 }

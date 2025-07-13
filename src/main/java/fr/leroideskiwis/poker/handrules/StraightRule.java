@@ -23,7 +23,7 @@ public class StraightRule implements PokerRule {
 
         return Optional.of(new EvaluatedRule(
                 PokerHand.STRAIGHT,
-                cards.getFirst()
+                cards.getLast().unknownize()
         ));
 
     }

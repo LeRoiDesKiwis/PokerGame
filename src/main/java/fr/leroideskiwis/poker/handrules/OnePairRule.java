@@ -14,6 +14,7 @@ public class OnePairRule implements PokerRule {
     public Optional<EvaluatedRule> evaluate(Hand hand) {
         Map<Rank, Integer> rankCount = hand.getRankCount();
         return rankCount.entrySet().stream()
+                .sorted((entry1, entry2) -> entry2.getKey().compareTo(entry1.getKey()))
                 .max(Comparator.comparingInt(Map.Entry::getValue))
                 .filter(entry -> entry.getValue() == 2)
                 .map(entry -> new EvaluatedRule(
