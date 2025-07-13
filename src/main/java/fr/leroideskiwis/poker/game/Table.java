@@ -87,6 +87,10 @@ public class Table {
         winner.credit(pot);
         gameDisplay.onGameOver(evaluateHands().entrySet());
         players.forEach(Player::reset);
+        this.deck = new Deck();
+        this.currentBet = 0;
+        this.pot = 0;
+
     }
 
     public boolean isOver() {
