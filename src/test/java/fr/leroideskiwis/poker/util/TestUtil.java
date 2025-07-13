@@ -20,24 +20,20 @@ public class TestUtil {
 
     public static Hand createThreeOfAKindHand() {
         // Create a hand with three of a kind (Aces)
-        return new Hand(
-                new Card(Rank.ACE, Suit.HEARTS),
-                new Card(Rank.ACE, Suit.SPADES),
-                new Card(Rank.ACE, Suit.DIAMONDS),
-                new Card(Rank.TWO, Suit.CLUBS),
-                new Card(Rank.THREE, Suit.HEARTS)
-        );
+        return new Hand(new Card(Rank.TWO, Suit.HEARTS),
+                new Card(Rank.ONE, Suit.SPADES),
+                new Card(Rank.TWO, Suit.DIAMONDS),
+                new Card(Rank.ACE, Suit.CLUBS),
+                new Card(Rank.ACE, Suit.HEARTS));
     }
 
     public static Hand createFourOfAKindHand() {
         // Create a hand with four of a kind (Aces)
-        return new Hand(
-                new Card(Rank.ACE, Suit.HEARTS),
-                new Card(Rank.ACE, Suit.SPADES),
-                new Card(Rank.ACE, Suit.DIAMONDS),
-                new Card(Rank.ACE, Suit.CLUBS),
-                new Card(Rank.TWO, Suit.HEARTS)
-        );
+        return new Hand(new Card(Rank.TWO, Suit.HEARTS),
+                new Card(Rank.TWO, Suit.SPADES),
+                new Card(Rank.TWO, Suit.DIAMONDS),
+                new Card(Rank.TWO, Suit.CLUBS),
+                new Card(Rank.ACE, Suit.HEARTS));
     }
 
     public static Hand createHighCardHand() {
