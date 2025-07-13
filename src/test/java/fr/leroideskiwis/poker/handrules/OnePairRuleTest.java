@@ -20,7 +20,7 @@ class OnePairRuleTest {
     @Test
     void evaluateNoPair(){
         // Test with a hand that does not have two pairs
-        Hand handWithoutTwoPairs = TestUtil.createNoPairHand();
+        Hand handWithoutTwoPairs = TestUtil.createHighCardHand();
 
         assertFalse(onePairRule.evaluate(handWithoutTwoPairs).isPresent(), "Expected no one pair in hand");
     }

@@ -40,12 +40,12 @@ public class TestUtil {
         );
     }
 
-    public static Hand createNoPairHand() {
-        // Create a hand with no pairs
+    public static Hand createHighCardHand() {
+        // Create a hand with no pairs, three of a kind, or four of a kind
         return new Hand(
-                new Card(Rank.ACE, Suit.HEARTS),
-                new Card(Rank.KING, Suit.SPADES),
-                new Card(Rank.QUEEN, Suit.DIAMONDS),
+                new Card(Rank.TWO, Suit.HEARTS),
+                new Card(Rank.FOUR, Suit.SPADES),
+                new Card(Rank.SIX, Suit.DIAMONDS),
                 new Card(Rank.JACK, Suit.CLUBS),
                 new Card(Rank.TEN, Suit.HEARTS)
         );
@@ -76,10 +76,10 @@ public class TestUtil {
     public static Hand createStraightHand() {
         // Create a hand with a straight (A, 2, 3, 4, 5)
         return new Hand(
-                new Card(Rank.ACE, Suit.HEARTS),
-                new Card(Rank.TWO, Suit.SPADES),
-                new Card(Rank.THREE, Suit.DIAMONDS),
-                new Card(Rank.FOUR, Suit.CLUBS),
+                new Card(Rank.TWO, Suit.HEARTS),
+                new Card(Rank.THREE, Suit.SPADES),
+                new Card(Rank.FOUR, Suit.DIAMONDS),
+                new Card(Rank.SIX, Suit.CLUBS),
                 new Card(Rank.FIVE, Suit.HEARTS)
         );
     }
@@ -87,9 +87,9 @@ public class TestUtil {
     public static Hand createFlushHand() {
         // Create a hand with a flush (all hearts)
         return new Hand(
-                new Card(Rank.ACE, Suit.HEARTS),
-                new Card(Rank.KING, Suit.HEARTS),
-                new Card(Rank.QUEEN, Suit.HEARTS),
+                new Card(Rank.JACK, Suit.HEARTS),
+                new Card(Rank.NINE, Suit.HEARTS),
+                new Card(Rank.EIGHT, Suit.HEARTS),
                 new Card(Rank.JACK, Suit.HEARTS),
                 new Card(Rank.TEN, Suit.HEARTS)
         );
