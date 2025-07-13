@@ -41,7 +41,7 @@ public class Hand {
     public String toString() {
         return cards.stream()
                 .map(Card::toString)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining("  "));
     }
 
     public Hand union(Hand other) {

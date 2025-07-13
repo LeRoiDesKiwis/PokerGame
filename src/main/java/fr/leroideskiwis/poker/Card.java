@@ -37,7 +37,7 @@ public class Card implements Comparable<Card> {
 
     @Override
     public String toString() {
-        return rank + " of " + suit;
+        return rank+suit.toString();
     }
 
     public Card unknownize(){
