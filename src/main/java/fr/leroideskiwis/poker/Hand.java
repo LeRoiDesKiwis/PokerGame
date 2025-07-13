@@ -49,4 +49,8 @@ public class Hand {
         combinedCards.addAll(other.cards);
         return new Hand(combinedCards);
     }
+
+    public int size() {
+        return cards.size();
+    }
 }
